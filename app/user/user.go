@@ -4,9 +4,10 @@ import (
 	"github.com/bytedance/sonic"
 	"github.com/gin-gonic/gin"
 	sdk "github.com/oneliuliu/user_sdk"
-	"github.com/oneliuliu/user_sdk/domain/model"
+	"github.com/oneliuliu/user_sdk/biz/interface/sdk/dto/request"
 	"service/models"
 	"service/utils"
+	"strconv"
 )
 
 func CreateNewUser(ctx *gin.Context) {
@@ -24,11 +25,16 @@ func CreateNewUser(ctx *gin.Context) {
 	//TODO: 校验入参
 	//userInfo := &models.UserInfo{}
 	//userInfo.BaseInfo = userCommonInfo
-	info := &model.UserInfo{
-		Uid:      userCommonInfo.Uid,
-		NickName: userCommonInfo.NickName,
+	req := request.CreateUserRequest{
+		Uid:         userCommonInfo.Uid,
+		NickName:    userCommonInfo.NickName,
+		Avatar:      userCommonInfo.Avatar,
+		Sex:         userCommonInfo.Sex,
+		PhoneNumber: userCommonInfo.PhoneNumber,
+		IdCard:      userCommonInfo.IdCard,
+		Age:         strconv.Itoa(int(userCommonInfo.Age)),
 	}
-	err = sdk.CreateUser(info)
+	err = sdk.CreateUser(&req)
 	if err != nil {
 		utils.SetErrInformation(ctx, models.StatusFail, models.StatusFailMessage)
 		return

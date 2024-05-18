@@ -49,6 +49,8 @@ github.com/modern-go/reflect2 v1.0.2 h1:xBagoLtFs94CBntxluKeaWgTMpvLxC4ur3nMaC9G
 github.com/modern-go/reflect2 v1.0.2/go.mod h1:yWuevngMOJpCy52FWWMvUC8ws7m/LJsjYzDa0/r8luk=
 github.com/oneliuliu/user_sdk v0.0.0-20240510173725-6856af30cd11 h1:a9mytbuni9kOnH+s00CoKwJ5VRvw4ompELZkzvBeve0=
 github.com/oneliuliu/user_sdk v0.0.0-20240510173725-6856af30cd11/go.mod h1:ibv4wGleAtvcwPVNED9AkKHa0ndrjGROi/BL0DGXh2c=
+github.com/oneliuliu/user_sdk v0.0.1 h1:tKk8xRpjfYpFzcAMrw3DybAw5ZMEjcyxd7zVkU65IKA=
+github.com/oneliuliu/user_sdk v0.0.1/go.mod h1:WUaMuJC0K36m5TyMzdheGeuxMZFr1CT7gJY/v74HVk8=
 github.com/pelletier/go-toml/v2 v2.2.2 h1:aYUidT7k73Pcl9nb2gScu7NSrKCSHIDE89b3+6Wq+LM=
 github.com/pelletier/go-toml/v2 v2.2.2/go.mod h1:1t835xjRzz80PqgE6HHgN2JOsmgYu/h4qDAS4n929Rs=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
