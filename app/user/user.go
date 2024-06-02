@@ -16,12 +16,17 @@ import (
 
 func Login(c *gin.Context) {
 	var acsJson models.AppCode2SessionJson
-	code := c.PostForm("code")
+
 	acs := models.AppCode2Session{
-		Code:      code,
-		AppId:     models.AppID,
-		AppSecret: models.AppSecret,
+		////Code:      code,
+		//AppId:     models.AppID,
+		//AppSecret: models.AppSecret,
 	}
+	err := c.BindJSON(&acs)
+	code := acs.Code
+	acs.AppId = models.AppID
+	acs.AppSecret = models.AppSecret
+
 	api := "https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code"
 	path := fmt.Sprintf(api, acs.AppId, acs.AppSecret, acs.Code)
 	res, err := http.DefaultClient.Get(path)
@@ -38,7 +43,7 @@ func Login(c *gin.Context) {
 
 	phoneNumber, err := api2.WXUserPhoneNumber(code)
 	if err != nil {
-		fmt.Println("获取用户手机号失败")
+		fmt.Printf("获取用户手机号失败,err:%v", err)
 		utils.SetErrInformation(c, models.StatusFail, models.StatusFailMessage)
 		return
 	}

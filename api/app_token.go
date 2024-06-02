@@ -1,12 +1,11 @@
 package api
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"net/url"
 	"service/models"
-	"strings"
 )
 
 func GetWXToken() (string, error) {
@@ -30,12 +29,16 @@ func WXUserPhoneNumber(code string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	path := " https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=%s"
+	path := "https://api.weixin.qq.com/wxa/business/getuserphonenumber?access_token=%s"
 	path = fmt.Sprintf(path, token)
-	val := url.Values{}
-	val.Set("code", code)
-	body := strings.NewReader(val.Encode())
-	resp, err := http.DefaultClient.Post(path, "\"application/x-www-form-urlencoded\"", body)
+
+	info := make(map[string]interface{})
+	info["code"] = code
+	bts, _ := json.Marshal(info)
+
+	nr := bytes.NewReader(bts)
+
+	resp, err := http.DefaultClient.Post(path, "\"application/json\"", nr)
 	if err != nil {
 		return "", err
 	}

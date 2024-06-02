@@ -25,7 +25,7 @@ type AppCode2SessionJson struct {
 
 // 微信小程序，用户登录凭证校验模型
 type AppCode2Session struct {
-	Code      string
-	AppId     string
-	AppSecret string
+	Code      string `json:"code"`
+	AppId     string `json:"appid"`
+	AppSecret string `json:"app_secret"`
 }
