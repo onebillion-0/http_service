@@ -15,6 +15,6 @@ const (
 )
 
 const (
-	AppID     = "1128"
-	AppSecret = "******"
+	AppID     = "wx7251445add02c96a"
+	AppSecret = "2affc5ba138bd770d3cac4c11bb8703a"
 )

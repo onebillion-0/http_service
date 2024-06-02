@@ -64,6 +64,7 @@ func Login(c *gin.Context) {
 			utils.SetErrInformation(c, models.StatusFail, models.StatusFailMessage)
 			return
 		}
+
 		utils.SetErrInformation(c, models.StatusSuccess, models.StatusSuccessMessage)
 	}
 }
