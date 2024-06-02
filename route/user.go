@@ -6,5 +6,11 @@ import (
 )
 
 func IntUserRoute(r *gin.Engine) {
+	// 微信小程序用户接口
+	app := r.Group("/app")
+
+	{
+		app.POST("/login")
+	}
 	r.POST("/create_user", user.CreateNewUser)
 }

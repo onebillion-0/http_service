@@ -13,3 +13,8 @@ const (
 	StatusInvalidParamMessage = "invalid_param"
 	StatusUnmarshalErrMessage = "unmarshal_err"
 )
+
+const (
+	AppID     = "1128"
+	AppSecret = "******"
+)
