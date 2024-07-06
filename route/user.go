@@ -2,6 +2,7 @@ package route
 
 import (
 	"github.com/gin-gonic/gin"
+	"service/app/school_system"
 	"service/app/user"
 )
 
@@ -15,7 +16,8 @@ func IntUserRoute(r *gin.Engine) {
 
 	school := r.Group("/school_system")
 	{
-		school.POST("login")
+		school.POST("login", school_system.Login)
+		school.POST("register", school_system.Register)
 	}
 
 }
