@@ -11,6 +11,11 @@ func IntUserRoute(r *gin.Engine) {
 	{
 		app.POST("/login", user.Login)
 	}
-
 	r.POST("/create_user", user.CreateNewUser)
+
+	school := r.Group("/school_system")
+	{
+		school.POST("login")
+	}
+
 }
