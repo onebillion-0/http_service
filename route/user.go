@@ -18,6 +18,7 @@ func IntUserRoute(r *gin.Engine) {
 	{
 		school.POST("login", school_system.Login)
 		school.POST("register", school_system.RegisterMember)
+		school.POST("register_appid", school_system.RegisterAppid)
 		school.GET("get_appid", school_system.GetAppid)
 	}
 
