@@ -10,7 +10,7 @@ import (
 	"strconv"
 )
 
-func Register(c *gin.Context) {
+func RegisterMember(c *gin.Context) {
 	var acsJson models.SchoolSystemRegister
 	err := c.BindJSON(&acsJson)
 	if err != nil {
@@ -38,4 +38,21 @@ func Register(c *gin.Context) {
 	}
 	utils.SetSuccessInformation(c)
 	return
+}
+
+func RegisterAppid(c *gin.Context) {
+	var acsJson models.Appid
+	err := c.BindJSON(&acsJson)
+	if err != nil {
+		utils.SetErrInformation(c, models.StatusFail, models.StatusFailMessage)
+		return
+	}
+
+	err = sdk.SchoolSystemRegister(c, int64(acsJson.Appid))
+	if err != nil {
+		utils.SetErrInformation(c, models.StatusFail, models.StatusFailMessage)
+	}
+	utils.SetSuccessInformation(c)
+	return
+
 }

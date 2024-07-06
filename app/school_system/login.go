@@ -6,6 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	sdk "github.com/onebillion-0/user_sdk"
 	"github.com/onebillion-0/user_sdk/biz/constants"
+	"net/http"
 
 	"service/models"
 	"service/utils"
@@ -39,4 +40,14 @@ func Login(c *gin.Context) {
 	c.SetCookie("token", token, 3600, "/", "", false, true)
 	utils.SetSuccessInformation(c)
 	return
+}
+
+func GetAppid(c *gin.Context) {
+	appidList, err := sdk.GetAppIDList(c)
+	if err != nil {
+		fmt.Println("get appid list error", err)
+		utils.SetErrInformation(c, models.StatusFail, models.StatusFailMessage)
+		return
+	}
+	c.JSON(http.StatusOK, appidList)
 }

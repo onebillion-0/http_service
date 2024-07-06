@@ -17,3 +17,7 @@ type SchoolSystemRegister struct {
 	Gender   string              `json:"gender"`
 	Role     school_members.Role `json:"role"`
 }
+
+type Appid struct {
+	Appid int `json:"appid"`
+}
